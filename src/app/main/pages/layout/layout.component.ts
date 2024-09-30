@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
+import { DexieService } from '../../../shared/dixiedb/dexie-db.service'
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-main-layout',
@@ -8,10 +10,30 @@ import { Router } from '@angular/router';
 })
 export class LayoutComponent {
 
+  private dexieService = inject( DexieService );
+  usuario: any;
+
   constructor(private router: Router) {}
 
   logout() {
-    this.router.navigate(['/auth']);
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: 'Confirma que desea cerrar sesión',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, deseo salir',
+      cancelButtonText: 'Cancelar',
+      customClass: {
+        confirmButton: 'btn btn-primary',
+        cancelButton: 'btn btn-warning'
+      },
+      buttonsStyling: false // para aplicar tus propias clases
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.router.navigate(['/auth']);
+        this.dexieService.clearUsuario();
+      }
+    });
   }
 
   toggleSidebar() {
@@ -33,4 +55,9 @@ export class LayoutComponent {
       }
     }
   }
+
+  async ngOnInit() {
+    this.usuario = await this.dexieService.showUsuario()
+  }
+
 }

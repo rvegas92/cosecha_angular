@@ -1,8 +1,6 @@
-
 <!doctype html>
 <html lang="en">
 <body>
-  <!--  Body Wrapper -->
   <div class="page-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
     data-sidebar-position="fixed" data-header-position="fixed">
     <div
@@ -16,14 +14,33 @@
                   <img src="../assets/images/logos/favicon.svg" height="80px" alt="">
                 </a>
                 <p class="text-center">Ingrese sus credenciales</p>
-                <form>
+                <div *ngIf="!!mensajeLogin" 
+                  class="col-md-12 alert alert-warning alert-dismissible alert-styled-left border-top-0
+                  border-bottom-0 border-right-0">
+                  <span>{{mensajeLogin}}</span>
+                </div>
+                <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
                   <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Usuario</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <label for="usuario" class="form-label">Usuario</label>
+                    <input type="text" class="form-control" id="usuario" formControlName="usuario">
+                    <div *ngIf="loginForm.get('usuario')?.touched && loginForm.get('usuario')?.invalid">
+                      <small *ngIf="loginForm.get('usuario')?.errors?.['required']" class="error">
+                        El campo de usuario es obligatorio
+                      </small>
+                      <small *ngIf="loginForm.get('usuario')?.errors?.['minlength']" class="error">
+                        El usuario debe tener al menos 8 caracteres
+                      </small>
+                      <small *ngIf="loginForm.get('usuario')?.errors?.['pattern']" class="error">
+                        El usuario debe contener solo números
+                      </small>
+                    </div>
                   </div>
                   <div class="mb-4">
-                    <label for="exampleInputPassword1" class="form-label">Clave</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1">
+                    <label for="clave" class="form-label">Clave</label>
+                    <input type="password" class="form-control" formControlName="clave">
+                    <div *ngIf="loginForm.get('clave')?.invalid && loginForm.get('clave')?.touched">
+                      <small class="error">El campo de contraseña es obligatorio</small>
+                    </div>
                   </div>
                   <div class="d-flex align-items-center justify-content-between mb-4">
                     <div class="form-check">
@@ -32,13 +49,10 @@
                         Recordarme
                       </label>
                     </div>
-                    <a class="text-primary fw-bold" href="./index.html">Olvidaste tu clave?</a>
+                    <a class="text-primary fw-bold">Olvidaste tu clave?</a>
                   </div>
-                  <a (click)="login()" class="btn btn-primary w-100 py-8 fs-4 mb-4">Ingresar</a>
-                  <!-- <div class="d-flex align-items-center justify-content-center">
-                    <p class="fs-4 mb-0 fw-bold">Olvidaste tu clave?</p>
-                    <a class="text-primary fw-bold ms-2" href="./authentication-register.html">Create an account</a>
-                  </div> -->
+                  <button type="submit" [disabled]="loginForm.invalid"
+                    class="btn btn-primary w-100 py-8 fs-4 mb-4">Ingresar</button>
                 </form>
               </div>
             </div>

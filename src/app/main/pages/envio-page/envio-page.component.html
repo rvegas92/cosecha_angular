@@ -1,0 +1,28 @@
+<div class="content">
+    <div class="card">
+        <div class="card-header bg-primary-400 text-white text-center">
+            <h6 class="card-title">Ticket Envío</h6>
+        </div>
+        <div class="card-body">
+            <div class="form-group mb-3">
+                <label for="placa">Placa</label>
+                <input type="text" v-model="placa" class="form-control" placeholder="Ingrese Placa">
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary w-100">Guardar</button>
+            </div>
+        </div>
+    </div>
+    <div class="card mt-4">
+        <div class="card-header">
+            <h6 class="card-title">Tickets</h6>
+        </div>
+        <div class="card-body">
+            <div *ngFor="let ticket of tickets; let i = index" [attr.data-key]="ticket.id" class="ticket-item">
+                <p class="mb-2"><strong>Ticket:</strong> {{ ticket.grupo }} - {{ ticket.codigo }}</p>
+                <p class="mb-2"><strong>Lote:</strong> {{ ticket.lote }}</p>
+                <p class="mb-2"><strong>Fecha:</strong> {{ ticket.fecha }}</p>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,1 +1,222 @@
-<p>cosecha-page works!</p>
+<div class="card">
+    <div class="card-header bg-white header-elements-inline">
+        <h6 class="card-title"></h6>
+        <div class="header-elements">
+            <div class="list-icons d-flex justify-content-end">
+                <button (click)="sincronizarAvances()" class="btn btn-success">
+                    Enviar avances <i class="icon icon-sync"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <fieldset>
+                    <div class="form-group row">
+                        <label class="col-lg-3 col-form-label"><b class="text-danger">*</b> Fundo:</label>
+                        <div class="col-lg-9">
+                            <input class="form-control" [value]="nombresConfiguracion.nombreFundo" readonly>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="col-md-6 mb-3">
+                <fieldset>
+                    <div class="form-group row">
+                        <label class="col-lg-3 col-form-label"><b class="text-danger">*</b> Cultivo:</label>
+                        <div class="col-lg-9">
+                            <input class="form-control" [value]="nombresConfiguracion.nombreCultivo" readonly>
+                          </div>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <fieldset>
+                    <div class="form-group row">
+                        <label class="col-lg-3 col-form-label"><b class="text-danger">*</b> Modulo:</label>
+                        <div class="col-lg-9">
+                            <input class="form-control" [value]="nombresConfiguracion.nombreModulo" readonly>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="col-md-6 mb-3">
+                <fieldset>
+                    <div class="form-group row">
+                        <label class="col-lg-3 col-form-label"><b class="text-danger">*</b> Turno:</label>
+                        <div class="col-lg-9">
+                            <input class="form-control" [value]="nombresConfiguracion.nombreTurno" readonly>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <fieldset>
+                    <div class="form-group row">
+                        <label class="col-lg-3 col-form-label"><b class="text-danger">*</b> Lote:</label>
+                        <div class="col-lg-9">
+                            <input class="form-control" [value]="nombresConfiguracion.nombreLote" readonly>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <fieldset>
+                    <div class="form-group row">
+                        <label class="col-md-3 col-sm-6 col-form-label">
+                            <b class="text-danger">*</b> Variedad:</label>
+                        <div class="col-md-9">
+                            <select [(ngModel)]="configuracion.idvariedad" 
+                              class="form-select mb-2" name="variedad">
+                              <option *ngFor="let t of variedades; let i = index" [value]="t.id">
+                                {{ t.descripcion }}
+                              </option>
+                            </select>													
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="col-md-6 mb-3">
+                <fieldset>
+                    <div class="form-group row">
+                        <label class="col-md-3 col-sm-6 col-form-label">
+                            <b class="text-danger">*</b> Tipo Envase:</label>
+                        <div class="col-md-9">
+                            <select [(ngModel)]="configuracion.idenvase" 
+                              class="form-select mb-2" name="envase">
+                              <option *ngFor="let t of envases; let i = index" [value]="t.id">
+                                {{ t.descripcionEnvase+" - "+t.descripcion }}
+                              </option>
+                            </select>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+    </div>
+    <div class="text-center mb-4">
+        <button (click)="crearAvance()"
+            class="btn btn-primary">Crear avance</button>
+    </div>
+</div>
+<div class="card">
+    <div class="card-header">
+        <legend class="font-weight-semibold font-size-sm">Registro de avances</legend>
+    </div>
+    <div class="card-body">
+        <div *ngFor="let a of getFilteredAvances()"  class="card mb-3">
+            <div class="card-header bg-white" style="padding-left: 10px;padding-bottom: 2%;">
+                <button class="btn btn-link" 
+                    (click)="editarAvance(a.idavance)" 
+                    style="text-align: center; background-color: lightcyan; padding: 10px; width: 100%; font-weight: bold; text-transform: uppercase; font-size: 14px;">
+                    Avance: [ {{ a.idavance }} ]
+                </button>
+            </div>
+            <div class="card-body" style="padding-top: 0%;padding-bottom: 0%;">
+                <div class="row" style="background-color: white;">
+                    <div class="col-sm-12 col-md-12" style="background-color: white;text-align: center;">
+                        <div class="d-flex align-items-center justify-content-center mb-2">
+                            <div class="font-weight-semibold mr-2">Lote </div>
+                            <span class="text-muted"> - {{ nombresConfiguracion.nombreLote }}</span>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-6" style="background-color: white;text-align: center;">
+                        <div class="d-flex align-items-center justify-content-center mb-2">
+                            <div class="font-weight-semibold mr-2">Modulo </div>
+                            <span class="text-muted"> - {{ nombresConfiguracion.nombreModulo }}</span>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-6" style="background-color: white;text-align: center;">
+                        <div class="d-flex align-items-center justify-content-center mb-2">
+                            <div class="font-weight-semibold mr-2">Turno </div>
+                            <span class="text-muted"> - {{ nombresConfiguracion.nombreTurno }}</span>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-6" style="background-color: white;text-align: center;">
+                        <div class="d-flex align-items-center justify-content-center mb-2">
+                            <div class="font-weight-semibold mr-2">Variedad </div>
+                            <span class="text-muted"> - {{ a.nombreVariedad }}</span>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-6" style="background-color: white;text-align: center;">
+                        <div class="d-flex align-items-center justify-content-center mb-2">
+                            <div class="font-weight-semibold mr-2">Envase </div>
+                            <span class="text-muted"> - {{ a.nombreEnvase }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer bg-white d-flex justify-content-between align-items-center">
+                <div>
+                    <i class="icon-calendar3 mr-2"></i>
+                    {{formatDate1(a.fecharegistro)}}
+                    <span :class="a.enviado==0?'bg-warning mr-2':'bg-success mr-2'">
+                        [ {{a.enviado==0?'Sin enviar':'Enviado'}} ]
+                    </span>
+                </div>
+                <div (click)="eliminarAvance(a.idavance)" class="cursor-pointer">
+                    <span class="badge bg-danger mr-2">
+                        <i class="icon icon-trash"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>		
+</div>
+
+<div class="modal-backdrop" *ngIf="isModalOpen" (click)="closeModal()"></div>
+    <div class="modal" tabindex="-1" *ngIf="isModalOpen">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">
+                <i class="icon-file-text mr-2"></i> Avance [{{ avance.idavance }}]
+            </h5>
+            <button type="button" class="btn-close" aria-label="Close" (click)="closeModal()"></button>
+          </div>
+          <div class="modal-body">
+            <div style="max-height: 70vh; overflow-y: auto;">
+                <div class="table-responsive" style="max-height: 60vh; overflow-y: auto; overflow-x: auto;">
+                    <table class="table table-fixed">
+                        <thead style="position: sticky; top: 0; z-index: 1; background-color: white;">
+                            <tr class="bg-danger-400">
+                                <th>#</th>
+                                <th>Documento</th>
+                                <th>Nombre</th>
+                                <th>Cantidad</th>
+                                <th>J/C</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let s of avance.davance; let i = index" class="text-center">
+                                <td>{{ i + 1 }}</td>
+                                <td>{{ s.nrodocumento }}</td>
+                                <td>{{ s.nombre }}</td>
+                                <td class="d-flex justify-content-center">
+                                <input [(ngModel)]="s.cantidad" min="0" style="width:70px" 
+                                        class="form-control" type="number">
+                                </td>
+                                <td>{{ contarJarras(s.nrodocumento) }}/{{ contarClamshell(s.nrodocumento) }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button (click)="closeModal()" type="button" class="btn btn-link" data-dismiss="modal">
+                Cancelar
+            </button>
+            <button (click)="guardarAvance()" type="button" class="btn btn-success">
+                Guardar <i class="icon-floppy-disk ml-2"></i>
+            </button>
+        </div>
+    </div>
+</div>

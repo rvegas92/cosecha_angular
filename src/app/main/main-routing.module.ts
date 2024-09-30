@@ -3,6 +3,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { LayoutComponent } from './pages/layout/layout.component';
 import { ParametrosPageComponent } from './pages/parametros-page/parametros-page.component'
 import { CosechaPageComponent } from './pages/cosecha-page/cosecha-page.component'
+import { EnvioPageComponent } from './pages/envio-page/envio-page.component';
+import { LecturaPageComponent } from './pages/lectura-page/lectura-page.component';
+import { ReportesPageComponent } from './pages/reportes-page/reportes-page.component';
 
 // localhost:4200/heroes
 const routes: Routes = [
@@ -12,6 +15,9 @@ const routes: Routes = [
     children: [
       { path: 'parametros', component: ParametrosPageComponent },
       { path: 'cosecha', component: CosechaPageComponent },
+      { path: 'envio', component: EnvioPageComponent },
+      { path: 'lectura', component: LecturaPageComponent },
+      { path: 'reportes', component: ReportesPageComponent },
       { path: '**', redirectTo: 'list' },
     ]
   }
