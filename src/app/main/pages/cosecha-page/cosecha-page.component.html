@@ -179,7 +179,6 @@
             <h5 class="modal-title">
                 <i class="icon-file-text mr-2"></i> Avance [{{ avance.idavance }}]
             </h5>
-            <button type="button" class="btn-close" aria-label="Close" (click)="closeModal()"></button>
           </div>
           <div class="modal-body">
             <div style="max-height: 70vh; overflow-y: auto;">
@@ -187,30 +186,35 @@
                     <table class="table table-fixed">
                         <thead style="position: sticky; top: 0; z-index: 1; background-color: white;">
                             <tr class="bg-danger-400">
-                                <th>#</th>
-                                <th>Documento</th>
-                                <th>Nombre</th>
-                                <th>Cantidad</th>
-                                <th>J/C</th>
+                                <th class="hide-on-mobile text-center">#</th>
+                                <th class="hide-on-mobile text-center">Documento</th>
+                                <th class="text-center">Nombre</th>
+                                <th class="text-center">Cantidad</th>
+                                <th class="text-center">J/C</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr *ngFor="let s of avance.davance; let i = index" class="text-center">
-                                <td>{{ i + 1 }}</td>
-                                <td>{{ s.nrodocumento }}</td>
+                                <td class="hide-on-mobile">{{ i + 1 }}</td>
+                                <td class="hide-on-mobile">{{ s.nrodocumento }}</td>
                                 <td>{{ s.nombre }}</td>
                                 <td class="d-flex justify-content-center">
-                                <input [(ngModel)]="s.cantidad" min="0" style="width:70px" 
-                                        class="form-control" type="number">
+                                    <button class="show-on-mobile d-none" type="button" class="btn-icon" (click)="s.cantidad = s.cantidad > 0 ? s.cantidad - 1 : 0">
+                                        <i class="icon-minus3"></i>
+                                    </button>
+                                    <input [(ngModel)]="s.cantidad" min="0" class="form-control text-center" type="number">
+                                    <button class="show-on-mobile" type="button" class="btn-icon" (click)="s.cantidad = s.cantidad + 1">
+                                        <i class="icon-plus3"></i>
+                                    </button>
                                 </td>
-                                <td>{{ contarJarras(s.nrodocumento) }}/{{ contarClamshell(s.nrodocumento) }}</td>
+                                <td class="contador"><span>{{ contarJarras(s.nrodocumento) }}/{{ contarClamshell(s.nrodocumento) }}</span></td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
-          </div>
-          <div class="modal-footer">
+        </div>
+        <div class="modal-footer">
             <button (click)="closeModal()" type="button" class="btn btn-link" data-dismiss="modal">
                 Cancelar
             </button>
