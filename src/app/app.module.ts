@@ -6,10 +6,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './shared/shared.module';
 import { AuthModule } from './auth/auth.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { RequerimientoPageComponent } from './main/pages/requerimiento-page/requerimiento-page.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    RequerimientoPageComponent
   ],
   imports: [
     BrowserModule,
