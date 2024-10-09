@@ -47,7 +47,15 @@ export class ParametrosPageComponent {
       this.configuracion = configuration[0];
       this.configuracion.nrodocumento = this.usuario.documentoIdentidad
       await this.cargarTurnosModulos()
-    } else {}
+    }
+  }
+
+  async cargarLotes() {
+    // const cultivo = await this.dexieService.ShowLotesByIdLote(this.configuracion.idlote);
+    // this.turnos = await this.dexieService.ShowTurnosByIdTurno(lote[0].turno);
+    // this.configuracion.idturno = this.turnos[0].id
+    // this.modulos = await this.dexieService.ShowModulosByIdModulo(this.turnos[0].modulo);
+    // this.configuracion.idmodulo = this.turnos[0].modulo
   }
 
   async cargarTurnosModulos() {

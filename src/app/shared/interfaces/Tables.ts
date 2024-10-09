@@ -45,6 +45,7 @@ export interface Lote {
     codLote: string;
     nombreLote: string;
     turno: number;
+    cultivo: number;
 }
 
 export interface Turno {

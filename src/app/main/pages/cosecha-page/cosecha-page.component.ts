@@ -38,6 +38,7 @@ export class CosechaPageComponent {
     nombreEnvase: null,
     nombreGrupo: null
   }
+  
   configuracion: any = {
     idfundo: null,
     idcultivo: null,
@@ -82,7 +83,6 @@ export class CosechaPageComponent {
     this.usuario = await this.dexieService.showUsuario()
     await this.getConfiguracion()
     await this.getAvances()
-    console.log(this.avance.davance)
   }
 
   openModal(): void {

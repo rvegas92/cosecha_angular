@@ -31,7 +31,8 @@
                     <div class="form-group row">
                         <label class="col-lg-3 col-form-label"><b class="text-danger">*</b> Cultivo:</label>
                         <div class="col-lg-9">
-                            <select [(ngModel)]="configuracion.idcultivo" 
+                            <select (change)="cargarLotes()"
+                              [(ngModel)]="configuracion.idcultivo" 
                               class="form-select mb-2" name="fundo">
                               <option *ngFor="let t of cultivos; let i = index" [value]="t.id">
                                 {{ t.descripcion }}

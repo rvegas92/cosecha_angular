@@ -4,12 +4,77 @@
             <h6 class="card-title">Ticket Envío</h6>
         </div>
         <div class="card-body">
-            <div class="form-group mb-3">
-                <label for="placa">Placa</label>
-                <input type="text" v-model="placa" class="form-control" placeholder="Ingrese Placa">
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <fieldset>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label"><b class="text-danger">*</b> Fundo:</label>
+                            <div class="col-lg-9">
+                                <input class="form-control" [value]="nombresConfiguracion.nombreFundo" readonly>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <fieldset>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label"><b class="text-danger">*</b> Cultivo:</label>
+                            <div class="col-lg-9">
+                                <input class="form-control" [value]="nombresConfiguracion.nombreCultivo" readonly>
+                              </div>
+                        </div>
+                    </fieldset>
+                </div>
             </div>
-            <div class="form-group">
-                <button class="btn btn-primary w-100">Guardar</button>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <fieldset>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label"><b class="text-danger">*</b> Modulo:</label>
+                            <div class="col-lg-9">
+                                <input class="form-control" [value]="nombresConfiguracion.nombreModulo" readonly>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <fieldset>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label"><b class="text-danger">*</b> Turno:</label>
+                            <div class="col-lg-9">
+                                <input class="form-control" [value]="nombresConfiguracion.nombreTurno" readonly>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <fieldset>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label"><b class="text-danger">*</b> Lote:</label>
+                            <div class="col-lg-9">
+                                <input class="form-control" [value]="nombresConfiguracion.nombreLote" readonly>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <fieldset>
+                        <div class="form-group row">
+                            <label class="col-md-3 col-sm-6 col-form-label">
+                                <b class="text-danger">*</b> Variedad:</label>
+                            <div class="col-md-9">
+                                <select [(ngModel)]="configuracion.idvariedad" 
+                                  class="form-select mb-2" name="variedad">
+                                  <option *ngFor="let t of variedades; let i = index" [value]="t.id">
+                                    {{ t.descripcion }}
+                                  </option>
+                                </select>													
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
             </div>
         </div>
     </div>
