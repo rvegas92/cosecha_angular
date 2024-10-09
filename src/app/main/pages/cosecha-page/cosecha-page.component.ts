@@ -82,6 +82,7 @@ export class CosechaPageComponent {
     this.usuario = await this.dexieService.showUsuario()
     await this.getConfiguracion()
     await this.getAvances()
+    console.log(this.avance.davance)
   }
 
   openModal(): void {
@@ -228,7 +229,16 @@ export class CosechaPageComponent {
         const igual = this.avances.filter((a: any) => a.idvariedad == this.configuracion.idvariedad 
         && a.envase == this.configuracion.idenvase)
         await this.llenarNombresVariedadEnvase()
-        if(igual.length > 0) {
+        if(this.avance.davance.length < 1){
+          Swal.fire({
+            title: 'Error en usuario',
+            text: 'No hay usuario asignado',
+            icon: 'error',
+            timer: 2000,
+            showConfirmButton: false
+          });
+        }
+        else if(igual.length > 0) {
           if(igual[0].eliminado === 1) {
             this.iniciarAvance()
             this.openModal()

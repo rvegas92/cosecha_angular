@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../auth/services/auth.service';
 import { DexieService } from '../../shared/dixiedb/dexie-db.service'
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login-page',
@@ -47,6 +48,9 @@ export class LoginPageComponent {
       } catch (error) {
         console.error('Error en el login: ', error);
         this.mensajeLogin = 'Hubo un error en el login, por favor intente nuevamente.';
+        Swal.fire({
+          title: this.mensajeLogin,
+        })
       }
     } else {
       console.log('Formulario inválido');
