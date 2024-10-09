@@ -1,0 +1,28 @@
+<div class="card">
+    <table class="table table-alt borderless">
+        <tr>
+            <th>{{user.documentoIdentidad}}</th>
+            <th>NRO_ETIQUETAS <input type="text"></th>
+            <th><button (click)="asignarTodos()" class="btn btn-primary">Asignar a todos</button></th>
+            <th><button (click)="desasignar()" class="btn btn-danger">Designar a todos</button></th>
+        </tr>
+    </table>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">NRODOCUMENTO</th>
+            <th scope="col">ETIQUETAS</th>
+            <th scope="col">ASISTIÓ</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let c of cosechadores">
+          <tr>
+            <td>{{c.nombre}}</td>
+            <td>{{c.cosechador}}</td>
+            <td><input type="text"></td>
+            <td><input type="checkbox" class="checkbox"></td>
+          </tr>
+        </tbody>
+      </table>
+</div>

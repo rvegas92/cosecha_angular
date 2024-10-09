@@ -1,0 +1,21 @@
+.card{
+    padding: 50px 20px;
+}
+th, td{
+    vertical-align: middle;
+}
+th input, td input{
+    height: 35px;
+    padding: 9px 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+th button{
+    padding: 9px 24px;
+}
+.table-alt th{
+    text-align: center;
+}
+tbody tr:last-child td{
+    border: none;
+}
