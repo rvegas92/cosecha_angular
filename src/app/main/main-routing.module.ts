@@ -6,6 +6,7 @@ import { CosechaPageComponent } from './pages/cosecha-page/cosecha-page.componen
 import { EnvioPageComponent } from './pages/envio-page/envio-page.component';
 import { LecturaPageComponent } from './pages/lectura-page/lectura-page.component';
 import { ReportesPageComponent } from './pages/reportes-page/reportes-page.component';
+import { RequerimientoPageComponent } from './pages/requerimiento-page/requerimiento-page.component';
 
 // localhost:4200/heroes
 const routes: Routes = [
@@ -18,6 +19,7 @@ const routes: Routes = [
       { path: 'envio', component: EnvioPageComponent },
       { path: 'lectura', component: LecturaPageComponent },
       { path: 'reportes', component: ReportesPageComponent },
+      { path: 'requerimiento', component: RequerimientoPageComponent},
       { path: '**', redirectTo: 'list' },
     ]
   }

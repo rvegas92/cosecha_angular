@@ -33,7 +33,7 @@
                   <span class="hide-menu">Configuración</span>
                 </li>
                 <li class="sidebar-item" (click)="toggleSidebar()">
-                  <a [routerLink]="['./parametros']" class="sidebar-link" aria-expanded="false">
+                  <a [routerLink]="['./parametros']" routerLinkActive="active" class="sidebar-link" aria-expanded="false">
                     <span>
                       <i class="icon icon-equalizer"></i>
                     </span>
@@ -45,7 +45,7 @@
                   <span class="hide-menu">Procesos</span>
                 </li>
                 <li class="sidebar-item" (click)="toggleSidebar()">
-                  <a [routerLink]="['./cosecha']" class="sidebar-link" aria-expanded="false">
+                  <a [routerLink]="['./cosecha']" routerLinkActive="active" class="sidebar-link" aria-expanded="false">
                     <span>
                       <i class="icon icon-grid4"></i>
                     </span>
@@ -53,7 +53,7 @@
                   </a>
                 </li>
                 <li class="sidebar-item" (click)="toggleSidebar()">
-                  <a [routerLink]="['./envio']" class="sidebar-link" aria-expanded="false">
+                  <a [routerLink]="['./envio']" routerLinkActive="active" class="sidebar-link" aria-expanded="false">
                     <span>
                       <i class="icon icon-paperplane"></i>
                     </span>
@@ -61,11 +61,27 @@
                   </a>
                 </li>
                 <li class="sidebar-item" (click)="toggleSidebar()">
-                  <a [routerLink]="['./lectura']" class="sidebar-link" aria-expanded="false">
+                  <a [routerLink]="['./lectura']" routerLinkActive="active" class="sidebar-link" aria-expanded="false">
                     <span>
                       <i class="icon icon-qrcode"></i>
                     </span>
                     <span class="hide-menu">Lectura de planta</span>
+                  </a>
+                </li>
+                <li class="sidebar-item" (click)="toggleSidebar()">
+                  <a [routerLink]="['./requerimiento']" routerLinkActive="active" class="sidebar-link" aria-expanded="false">
+                    <span>
+                      <i class="icon icon-qrcode"></i>
+                    </span>
+                    <span class="hide-menu">Requerimiento de etiquetas</span>
+                  </a>
+                </li>
+                <li class="sidebar-item" (click)="toggleSidebar()">
+                  <a [routerLink]="['./consulta']" routerLinkActive="active" class="sidebar-link" aria-expanded="false">
+                    <span>
+                      <i class="icon icon-ticket"></i>
+                    </span>
+                    <span class="hide-menu">Consulta QR</span>
                   </a>
                 </li>
                 <li class="nav-small-cap">

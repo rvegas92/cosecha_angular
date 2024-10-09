@@ -16580,6 +16580,10 @@ textarea.form-control-lg {
   margin-bottom: 2px;
   font-weight: 400;
 }
+.sidebar-nav ul .sidebar-item .sidebar-link.active {
+  background-color: rgba(41, 82, 255, 0.1);
+  color: #2952ff;
+}
 .sidebar-nav ul .sidebar-item .sidebar-link span:first-child {
   display: -webkit-box;
   display: -ms-flexbox;
