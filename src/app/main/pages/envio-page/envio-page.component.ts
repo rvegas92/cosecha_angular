@@ -43,7 +43,10 @@ export class EnvioPageComponent {
     idturno: null,
     idvariedad: null,
     idenvase: null,
-    tipoenvase: null
+    tipoenvase: null,
+    ticketCosecha: null,
+    placa: null,
+    qrticket: null
   }
 
   async ngOnInit() {

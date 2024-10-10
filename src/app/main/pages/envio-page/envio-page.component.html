@@ -76,6 +76,45 @@
                     </fieldset>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <fieldset>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label"> Placa:</label>
+                            <div class="col-lg-9">
+                                <input type="text" class="form-control" [value]="configuracion.placa">
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <fieldset>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label"><b class="text-danger">*</b> Ticket cosecha:</label>
+                            <div class="col-lg-9">
+                                <input type="text" class="form-control" [value]="configuracion.ticketCosecha">
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <fieldset>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label"> QR ticket:</label>
+                            <div class="col-lg-9">
+                                <input type="text" class="form-control" [value]="configuracion.qrticket">
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="col-md-6 mb-3 bg-success">
+                    <fieldset>
+                        <div class="form-group row"><i class="icon icon-camera"></i></div>
+                    </fieldset>
+                </div>
+            </div>
         </div>
     </div>
     <div class="card mt-4">
