@@ -2,27 +2,59 @@
     <table class="table table-alt borderless">
         <tr>
             <th>{{user.documentoIdentidad}}</th>
-            <th>NRO_ETIQUETAS <input type="text"></th>
-            <th><button (click)="asignarTodos()" class="btn btn-primary">Asignar a todos</button></th>
-            <th><button (click)="desasignar()" class="btn btn-danger">Designar a todos</button></th>
+            <th>NRO_ETIQUETAS <input type="number" [(ngModel)]="etiquetas"></th>
+            <th><button (click)="openModal()"class="btn btn-primary">Crear tickets</button></th>
+            <th><button class="btn btn-success">Enviar avances <i class="icon icon-sync"></i></button></th>
         </tr>
     </table>
-    <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">Nombre</th>
-            <th scope="col">NRODOCUMENTO</th>
-            <th scope="col">ETIQUETAS</th>
-            <th scope="col">ASISTIÓ</th>
-          </tr>
-        </thead>
-        <tbody *ngFor="let c of cosechadores">
-          <tr>
-            <td>{{c.nombre}}</td>
-            <td>{{c.cosechador}}</td>
-            <td><input type="text"></td>
-            <td><input type="checkbox" class="checkbox"></td>
-          </tr>
-        </tbody>
-      </table>
+</div>
+<div class="modal-backdrop" *ngIf="isModalOpen"></div>
+    <div class="modal" tabindex="-1" *ngIf="isModalOpen">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">
+              <table class="table table-alt borderless">
+                <tr>
+                    <th><button (click)="asignarTodos()" class="btn btn-primary">Asignar a todos</button></th>
+                    <th><button (click)="desasignar()" class="btn btn-danger">Designar a todos</button></th>
+                </tr>
+            </table>
+            </h5>
+          </div>
+          <div class="modal-body">
+            <div style="max-height: 70vh; overflow-y: auto;">
+                <div class="table-responsive" style="max-height: 60vh; overflow-y: auto; overflow-x: auto;">
+                    <table class="table table-fixed">
+                        <thead style="position: sticky; top: 0; z-index: 1; background-color: white;">
+                            <tr class="bg-danger-400">
+                                <th class="hide-on-mobile text-center">#</th>
+                                <th class="hide-on-mobile text-center">Nombre</th>
+                                <th class="text-center">Nro Documento</th>
+                                <th class="text-center">Etiquetas</th>
+                                <th class="text-center">Asistió</th>
+                            </tr>
+                        </thead>
+                        <tbody *ngFor="let c of cosechadores;let i = index">
+                          <tr>
+                            <td>{{i + 1}}</td>
+                            <td>{{c.nombre}}</td>
+                            <td>{{c.cosechador}}</td>
+                            <td><input type="text" [(ngModel)]="c.nroetiquetas"></td>
+                            <td><input type="checkbox" class="checkbox"></td>
+                          </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button (click)="closeModal()" type="button" class="btn btn-link" data-dismiss="modal">
+              Cancelar
+          </button>
+          <button type="button" (click)="guardarEtiquetas()" class="btn btn-success">
+              Guardar <i class="icon-floppy-disk ml-2"></i>
+          </button>
+      </div>
+    </div>
 </div>

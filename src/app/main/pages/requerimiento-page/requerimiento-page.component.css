@@ -19,3 +19,110 @@ th button{
 tbody tr:last-child td{
     border: none;
 }
+/* Estilos para el fondo del modal */
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1040;
+  }
+    
+  /* Estilos para centrar el modal */
+  .modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1050;
+  }
+    
+  /* Estilos del modal en sí */
+  .modal-dialog {
+    /* max-width: 500px; */
+    margin: 0 auto;
+  }
+    
+  
+  /* Estilos generales */
+  .modal-content {
+    padding: 15px;
+  }
+  
+  .modal-title {
+    font-size: 1.2rem;
+  }
+  
+  .table th, .table td {
+    padding: 0.5rem;
+    font-size: 0.9rem;
+  }
+  
+  .btn-icon {
+    background-color: transparent; /* Sin fondo */
+    border: none; /* Sin borde */
+    color: #617483; /* Gris bonito */
+    font-size: 1.2rem; /* Tamaño del ícono */
+    padding: 5px; /* Espacio alrededor del ícono */
+    cursor: pointer;
+  }
+  
+  .d-flex {
+    gap: 5px; /* Espacio entre el input y los botones */
+  }
+  
+  /* Estilos específicos para pantallas móviles */
+  @media (max-width: 768px) {
+    .hide-on-mobile {
+      display: none; /* Oculta las columnas */
+    }
+    .show-on-mobile {
+      display: inherit; /* muestra las columnas */
+    }
+    .modal-dialog {
+        width: 95%; /* Ajusta el ancho para móviles */
+        margin: 20px auto; /* Centramos el modal */
+    }
+  
+    .modal-title {
+        font-size: 0.9rem; /* Reduce el tamaño de la letra del título */
+    }
+  
+    .table th, .table td {
+      text-align: left;
+      padding: 0.3rem;
+      font-size: 0.6rem;
+    }
+  
+    .table input {
+      width: 55px;
+      font-size: 0.7rem;
+    }
+  
+    .modal-body {
+        padding: 10px;
+    }
+    
+  
+    .modal-header, .modal-footer {
+        padding: 10px;
+    }
+  
+    .modal-footer .btn {
+        font-size: 0.6rem; /* Reduce el tamaño de los botones */
+    }
+  
+    .contador {
+      vertical-align: middle;
+    }
+    .contador span {
+      font-size:  0.9rem;
+    }
+  
+  }

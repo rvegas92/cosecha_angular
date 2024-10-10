@@ -229,7 +229,7 @@ export class CosechaPageComponent {
         const igual = this.avances.filter((a: any) => a.idvariedad == this.configuracion.idvariedad 
         && a.envase == this.configuracion.idenvase)
         await this.llenarNombresVariedadEnvase()
-        if(this.avance.davance.length < 1){
+        if(this.cosechadores.length < 1){
           Swal.fire({
             title: 'Error en usuario',
             text: 'No hay usuario asignado',

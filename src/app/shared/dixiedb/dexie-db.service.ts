@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Fundo,Cultivo,Grupo,Tapa,Modulo,Lote,Turno,Variedad,
-  Envase,Configuracion,Usuario,Cosechador,Avance } from '../interfaces/Tables'
+  Envase,Configuracion,Usuario,Cosechador,Avance, 
+  Etiquetas} from '../interfaces/Tables'
 import Dexie from 'dexie';
 
 @Injectable({
@@ -21,6 +22,7 @@ export class DexieService extends Dexie {
   public usuario!: Dexie.Table<Usuario, number>;
   public cosechadores!: Dexie.Table<Cosechador, number>;
   public avances!: Dexie.Table<Avance, number>;
+  public etiquetas!: Dexie.Table<Etiquetas, string>;
 
   constructor() {
     super('Cosecha');
@@ -41,8 +43,9 @@ export class DexieService extends Dexie {
       usuario: 'id,sociedad,ruc,razonSocial,idProyecto,proyecto,documentoIdentidad,usuario,clave,nombre,esAdministrador,esSupervisor',
       cosechadores: 'id,supervisor,cosechador,nombre',
       avances:`idavance,cabeceraAvance,fundo,codfundo,cultivo,codcultivo,modulo,codmodulo,turno,codturno,lote,
-              codlote,variedad,codvariedad,clasificacionenvase,envase,condicion,fecharegistro,grupo,descripcionenvase,
-              enviado,fecha,eliminado,nombreVariedad,nombreEnvase,davance`
+      codlote,variedad,codvariedad,clasificacionenvase,envase,condicion,fecharegistro,grupo,descripcionenvase,
+      enviado,fecha,eliminado,nombreVariedad,nombreEnvase,davance`,
+      etiquetas: 'nrodocumento,nroetiquetas,imprimir',
     });
 
     this.fundos = this.table('fundos');
@@ -58,6 +61,7 @@ export class DexieService extends Dexie {
     this.usuario = this.table('usuario');
     this.cosechadores = this.table('cosechadores');
     this.avances = this.table('avances');
+    this.etiquetas = this.table('etiquetas')
   }
 
   async saveUsuario(usuario: Usuario) {await this.usuario.put(usuario);}
@@ -137,6 +141,11 @@ export class DexieService extends Dexie {
   async clearAvances() {await this.avances.clear();}
   async clearAvanceById(id: number) {await this.avances.delete(id);}
   async updateEliminadoAvanceById(id: number) { await this.avances.update(id, { eliminado: 1 });}
+  //
+  async saveEtiqueta(etiqueta: Etiquetas) {await this.etiquetas.put(etiqueta);}  
+  async saveEtiquetas(etiquetas: Etiquetas[]) {await this.etiquetas.bulkPut(etiquetas);}
+  async showEtiqueta() {return await this.etiquetas.toArray();}
+  async clearEtiqueta() {await this.etiquetas.clear();}
   //
   async clearAllTables() {
       await this.clearFundos();

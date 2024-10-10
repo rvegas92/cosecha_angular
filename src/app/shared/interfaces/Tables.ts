@@ -136,3 +136,8 @@ export interface Avance {
     nombreEnvase: string;
     davance: [];
 }
+export interface Etiquetas{
+    nrodocumento: string,
+    nroetiquetas: number,
+    imprimir: string
+}

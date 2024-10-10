@@ -16855,6 +16855,7 @@ textarea.form-control-lg {
   }
 }
 * {
+  transition: background-color .3s ease-in-out;
   margin: 0;
   padding: 0;
   -webkit-box-sizing: border-box;

@@ -1,4 +1,4 @@
 
 export const environment = {
-  baseUrl: 'https://apicosecha.hassperu.com:8010'
+  baseUrl: 'http://172.16.30.13:8010'
 }
